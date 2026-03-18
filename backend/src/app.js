@@ -32,9 +32,17 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // ── Routes ──────────────────────────────────────────────────────────────────
+// Local development routes
 app.use('/health', healthRoute);
 app.use('/chat', chatRoute);
 app.use('/feedback', feedbackRoute);
+
+// Vercel routes under /api (due to vercel.json rewrite)
+const apiRouter = express.Router();
+apiRouter.use('/health', healthRoute);
+apiRouter.use('/chat', chatRoute);
+apiRouter.use('/feedback', feedbackRoute);
+app.use('/api', apiRouter);
 
 // 404 handler
 app.use((_req, res) => {
