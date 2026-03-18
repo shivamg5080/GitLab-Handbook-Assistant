@@ -75,8 +75,6 @@ async function chat(req, res) {
         console.error('[ChatController] Error:', err);
         return res.status(500).json({
             error: 'Something went wrong while processing your request. Please try again.',
-            details: err.message,
-            stack: err.stack
         });
     }
 }
