@@ -3,7 +3,10 @@
     "builds": [
         {
             "src": "backend/src/app.js",
-            "use": "@vercel/node"
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": "backend/data/chunks.json"
+            }
         },
         {
             "src": "frontend/package.json",
